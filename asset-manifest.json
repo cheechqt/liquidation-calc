@@ -1,15 +1,17 @@
 {
   "files": {
-    "main.css": "/liquidation-calc/static/css/main.19d0c092.css",
-    "main.js": "/liquidation-calc/static/js/main.8d1c39d2.js",
+    "main.css": "/liquidation-calc/static/css/main.d4e9933b.css",
+    "main.js": "/liquidation-calc/static/js/main.752055d6.js",
     "static/media/p2.jpg": "/liquidation-calc/static/media/p2.69993e8acc8b3bac06e8.jpg",
     "static/media/p1.jpg": "/liquidation-calc/static/media/p1.cd025b31c3de7168cf64.jpg",
+    "static/media/step1.jpg": "/liquidation-calc/static/media/step1.c16e1e32d8db7e60d00a.jpg",
+    "static/media/step3.png": "/liquidation-calc/static/media/step3.3ada79d83179181bc026.png",
     "index.html": "/liquidation-calc/index.html",
-    "main.19d0c092.css.map": "/liquidation-calc/static/css/main.19d0c092.css.map",
-    "main.8d1c39d2.js.map": "/liquidation-calc/static/js/main.8d1c39d2.js.map"
+    "main.d4e9933b.css.map": "/liquidation-calc/static/css/main.d4e9933b.css.map",
+    "main.752055d6.js.map": "/liquidation-calc/static/js/main.752055d6.js.map"
   },
   "entrypoints": [
-    "static/css/main.19d0c092.css",
-    "static/js/main.8d1c39d2.js"
+    "static/css/main.d4e9933b.css",
+    "static/js/main.752055d6.js"
   ]
 }
