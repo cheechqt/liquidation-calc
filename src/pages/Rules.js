@@ -1,17 +1,19 @@
+import { useState } from "react";
 import p1 from "../images/p1.jpg";
 import p2 from "../images/p2.jpg";
 
 function Rules() {
+  const [isShow, setIsShow] = useState(false);
   return (
-    <div className="text-white p-1 border border-white text-center mt-7">
-      <h1 className="underline text-xl">rules</h1>
-      <h2 className="text-green-500 text-xl">isolated margin</h2>
-      <h2 className="text-red-500 text-xl">all calculations are random</h2>
+    <div className="main-container mt-5">
+      <h2 className="underline">rules</h2>
+      <h3 className="text-green-500">isolated margin</h3>
+      <h4 className="text-red-500">all calculations are random</h4>
       <div>
         Report an error:
         <div>
           <a
-            className="text-blue-700 cursor-pointer"
+            className="text-blue-500 cursor-pointer"
             href="mailto:stupidThingSpam@gmail.com"
           >
             stupidThingSpam@gmail.com
@@ -26,22 +28,22 @@ function Rules() {
           </a>
         </div>
       </div>
-      <div>
+      <div className="flex-center flex-col">
         <h3>first of all/ all crypto exchanges are scams </h3>
-        <div className="flex items-start justify-center">
-          <img
-            className="max-w-[140px] sm:max-w-[240px]"
-            src={p1}
-            alt="screenshot"
-          />
-          <img
-            className="max-w-[140px] sm:max-w-[240px]"
-            src={p2}
-            alt="screenshot"
-          />
-        </div>
+        <btn
+          className="btn btn-primary text-xs w-[160px] mt-1"
+          onClick={() => setIsShow(!isShow)}
+        >
+          {isShow ? "close" : "proof"}
+        </btn>
+        {isShow && (
+          <div className="flex items-start justify-center flex-col md:flex-col mt-1">
+            <img className="" src={p1} alt="screenshot" />
+            <img className="" src={p2} alt="screenshot" />
+          </div>
+        )}
       </div>
-      <p>
+      <p className="text-xs md:text-base mt-1 text-justify">
         The author is not responsible for the accuracy, completeness or quality
         of the information provided. No claims for material or non-material
         damage caused by the use or non-use of the information provided or the

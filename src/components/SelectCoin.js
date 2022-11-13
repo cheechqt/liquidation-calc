@@ -1,4 +1,4 @@
-import { coins } from "./coins-data";
+import { coins } from "../coins-data";
 
 function SelectCoin({ setCurData, curData }) {
   const getMMR = (coinName) => {
@@ -7,7 +7,7 @@ function SelectCoin({ setCurData, curData }) {
   };
 
   return (
-    <div className="flex items-center justify-between mt-3">
+    <div className="flex-center mt-3 w-full">
       <select
         className="w-full"
         required
@@ -32,7 +32,7 @@ function SelectCoin({ setCurData, curData }) {
           );
         })}
       </select>
-      <h1 className="text-white pl-2 text-xs">MMR: {curData.maintenanceMarginRate}</h1>
+      {/* <p className="text-white pl-2 text-xs">MMR: {curData.maintenanceMarginRate}</p> */}
     </div>
   );
 }

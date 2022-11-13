@@ -1,3 +1,5 @@
+import BaseInput from "./UI/BaseInput";
+
 function ExtraMargin({
   curData,
   setCurData,
@@ -7,34 +9,30 @@ function ExtraMargin({
 }) {
   if (isShow) {
     return (
-      <div className="flex flex-col p-1 mt-3 border border-white">
+      <div className="flex flex-col p-1 mt-3 card-border text-xs md:text-base">
         <button
-          className="text-white bg-yellow-700"
+          className="btn btn-primary"
           onClick={() => {
             setIsShow(false);
             setCurData({ ...curData, extraMargin: 0 });
             setCurData({ ...curData, contractSize: 1 });
           }}
         >
-          Hide
+          Close
         </button>
-        <label className="text-white">Extra Margin Added</label>
-        <input
+        <BaseInput
+          label="Extra Margin Added"
           name="extraMargin"
-          type="number"
-          placeholder="Extra Margin Added"
-          required
           value={curData.extraMargin}
-          onChange={(e) => handleInputChange(e)}
+          handleOnChange={(e) => handleInputChange(e)}
+          currency="USDT"
         />
-        <label className="text-white">Contract Size</label>
-        <input
+        <BaseInput
+          label="Contract Size"
           name="contractSize"
-          type="number"
-          placeholder="Contract Size"
-          required
           value={curData.contractSize}
-          onChange={(e) => handleInputChange(e)}
+          handleOnChange={(e) => handleInputChange(e)}
+          currency={curData.coinName}
         />
       </div>
     );
@@ -42,7 +40,7 @@ function ExtraMargin({
 
   return (
     <button
-      className="text-white bg-yellow-700 mt-3"
+      className="btn btn-primary mt-3"
       onClick={() => {
         setIsShow(true);
         setCurData({ ...curData, extraMargin: "", contractSize: "" });

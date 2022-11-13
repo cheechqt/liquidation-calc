@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import ExtraMargin from "./ExtraMargin";
-import Rules from "./Rules";
-import SelectCoin from "./SelectCoin";
-import { BsPlusCircleFill } from "react-icons/bs";
-import AdditionalOrder from "./AdditionalOrder";
+import { Link } from "react-router-dom";
+import ExtraMargin from "../components/ExtraMargin";
+import SelectCoin from "../components/SelectCoin";
+import AdditionalOrder from "../components/AdditionalOrder";
+import PlusButton from "../components/UI/PlusButton";
+import BaseInput from "../components/UI/BaseInput";
 
 function Main() {
   const [curData, setCurData] = useState({
@@ -95,58 +96,46 @@ function Main() {
   };
 
   return (
-    <div className="flex flex-col items-center">
-      <SelectCoin
-        curData={curData}
-        setCurData={setCurData}
-        handleInputChange={handleInputChange}
-      />
-      <form className="flex flex-col max-w-[255px]">
-        <div className="flex items-center justify-center">
-          {!orders[0] && (
-            <div className="w-full">
-              <label className="text-white">Entry Price</label>
-              <input
-                name="entryPrice"
-                type="number"
-                placeholder="Entry Price"
-                required
-                value={curData.entryPrice}
-                onChange={(e) => handleInputChange(e)}
-              />
-            </div>
-          )}
-          <button
-            type="button"
-            className="bg-yellow-300 rounded-full w-12 h-12 flex items-center justify-center ml-1"
-            onClick={handleCreateNewOrder}
-          >
-            <BsPlusCircleFill
-              className="text-gray-500 hover:text-yellow-700"
-              size={100}
+    <div className="main-container">
+      <form className="flex justify-center flex-col">
+        <SelectCoin
+          curData={curData}
+          setCurData={setCurData}
+          handleInputChange={handleInputChange}
+        />
+        <Link to="/custom-coin" className="text-sm text-blue-500 underline">
+          I didn't find the right coin/ нужной монеты нет
+        </Link>
+        {!orders[0] && (
+          <div className="flex items-end mt-3">
+            <BaseInput
+              label="Entry Price"
+              name="entryPrice"
+              value={curData.entryPrice}
+              handleOnChange={(e) => handleInputChange(e)}
+              currency="USDT"
             />
-          </button>
-        </div>
+            <PlusButton onClick={handleCreateNewOrder} />
+          </div>
+        )}
         {orders.length !== 0 &&
           orders.map((order) => {
             return (
               <AdditionalOrder
                 key={order.id}
+                curData={curData}
                 curOrder={order}
                 orders={orders}
                 setOrders={setOrders}
-                handleInputChange={handleInputChange}
+                handleCreateNewOrder={handleCreateNewOrder}
               />
             );
           })}
-        <label className="text-white">Leverage</label>
-        <input
+        <BaseInput
+          label="Leverage"
           name="leverage"
-          type="number"
-          placeholder="Leverage"
-          required
           value={curData.leverage}
-          onChange={(e) => handleInputChange(e)}
+          handleOnChange={(e) => handleInputChange(e)}
         />
         <ExtraMargin
           curData={curData}
@@ -155,10 +144,12 @@ function Main() {
           setIsShow={setIsShowExtraMarginBox}
           handleInputChange={handleInputChange}
         />
-        <div className="flex justify-between gap-x-5 mt-3">
+        <div className="flex-between gap-x-5 mt-3">
           <button
-            className={`text-white bg-yellow-700 px-5 w-full ${
-              curData.type === "long" ? "" : "bg-opacity-30"
+            className={`btn  w-full ${
+              curData.type === "long"
+                ? "btn-success"
+                : "btn-secondary !border-green-500"
             }`}
             onClick={(e) => {
               e.preventDefault();
@@ -168,8 +159,10 @@ function Main() {
             Long
           </button>
           <button
-            className={`text-white bg-yellow-700 px-5 w-full ${
-              curData.type === "short" ? "" : "bg-opacity-30"
+            className={`btn  w-full ${
+              curData.type === "short"
+                ? "btn-danger"
+                : "btn-secondary !border-red-500"
             }`}
             onClick={(e) => {
               e.preventDefault();
@@ -180,14 +173,13 @@ function Main() {
           </button>
         </div>
       </form>
-      <h1 className="text-white">
+      <h1 className="text-lg text-center card-border !border-yellow-500  mt-2 bg-black">
         {!isNaN(result) &&
           result !== -Infinity &&
           result !== +Infinity &&
           result > 0 &&
           `Liquidation price: ±${Number(result.toString().slice(0, 8))}`}
       </h1>
-      <Rules />
     </div>
   );
 }

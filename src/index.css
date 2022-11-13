@@ -2,16 +2,100 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+@layer base {
+  * {
+    @apply m-0 p-0 box-border scroll-smooth;
+  }
+  html,
+  body {
+    @apply h-full
+  }
+
+  html {
+    @apply text-base;
+  }
+
+  body {
+    font-family: "Poppins", sans-serif;
+  }
+
+  section {
+    @apply w-full py-16 px-0;
+  }
+
+  h1 {
+    @apply font-medium text-2xl md:text-4xl;
+  }
+  h2 {
+    @apply font-medium text-2xl;
+  }
+  h3 {
+    @apply font-medium text-xl;
+  }
+  h4 {
+    @apply font-medium text-lg;
+  }
+
+  p {
+    @apply text-2xl font-light;
+  }
+
+  select,
+  input {
+    @apply text-black rounded-[3px] py-[2px] pl-1 pr-[72px] bg-strange min-w-[120px];
+  }
+  select::placeholder,
+  input::placeholder {
+    @apply text-light;
+  }
+
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer utilities {
+  .container {
+    @apply my-0 mx-auto py-0 px-5;
+  }
+  .main-container {
+    @apply container text-center !pt-3 flex-center flex-col flex-auto
+  }
+  .card-border {
+    @apply border border-strange rounded-[3px];
+  }
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+  .flex-between {
+    @apply flex items-center justify-between;
+  }
+  .center-all {
+    @apply flex justify-center items-center flex-col w-full m-auto text-center;
+  }
+  .btn {
+    @apply py-[6px] px-2 border border-transparent rounded-[3px] cursor-pointer flex items-center justify-center transition-all duration-300 hover:translate-y-[-2px];
+  }
+  .btn-primary {
+    @apply text-dark bg-yellow-500;
+  }
+  .btn-secondary {
+    @apply text-light bg-transparent border border-white;
+  }
+  .btn-danger {
+    @apply text-light bg-red-500;
+  }
+  .btn-success {
+    @apply text-dark bg-green-500;
+  }
 }
